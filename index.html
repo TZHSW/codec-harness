@@ -6,7 +6,7 @@
   <meta name="description" content="CodecHarness 项目博客、演示文稿与交互式实验记录。">
   <title>CodecHarness 项目主页</title>
   <link rel="stylesheet" href="homepage.css">
-  <link rel="stylesheet" href="landing.css">
+  <link rel="stylesheet" href="landing.css?v=cards1">
   <script>
     const articleSections = ["introduction", "background", "overview", "modules", "request", "search", "evolution", "questions", "future"];
     if (articleSections.includes(location.hash.slice(1))) location.replace("article.html" + location.hash);
@@ -17,12 +17,20 @@
   <main class="frame landing-main">
     <header class="hero">
       <h1 class="wordmark">Codec<b>Harness</b></h1>
-      <div class="frames" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
     </header>
     <nav class="destinations" aria-label="项目栏目">
-      <a href="article.html">博客<span aria-hidden="true">→</span></a>
-      <a href="slides/">PPT<span aria-hidden="true">→</span></a>
-      <a href="workbench/">实验记录<span aria-hidden="true">→</span></a>
+      <a class="entry journal" href="article.html">
+        <span class="art" aria-hidden="true"><span class="book"><i></i></span></span>
+        <span class="entry-label">技术博客<span class="arrow" aria-hidden="true">→</span></span>
+      </a>
+      <a class="entry deck" href="slides/">
+        <span class="art" aria-hidden="true"><span class="panes"><i></i><i></i><i></i></span></span>
+        <span class="entry-label">项目演示<span class="arrow" aria-hidden="true">→</span></span>
+      </a>
+      <a class="entry lab" href="workbench/">
+        <span class="art" aria-hidden="true"><span class="plot"><i></i></span></span>
+        <span class="entry-label">实验记录<span class="arrow" aria-hidden="true">→</span></span>
+      </a>
     </nav>
   </main>
 </body>
