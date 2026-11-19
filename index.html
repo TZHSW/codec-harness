@@ -11,7 +11,7 @@
   <a class="skip" href="#introduction">跳至正文</a>
   <header class="bar frame">
     <a class="brand" href="#top"><i aria-hidden="true"></i>CodecHarness</a>
-    <nav aria-label="主导航"><a href="#overview">搜索闭环</a><a href="#modules">模块职责</a><a href="#evolution">Agent 自进化</a></nav>
+    <nav aria-label="主导航"><a href="#overview">搜索闭环</a><a href="#modules">模块职责</a><a href="#evolution">Agent 自进化</a><a href="#experiments">实验记录</a></nav>
   </header>
   <main>
     <div class="cover">
@@ -35,8 +35,10 @@
 <a href="#search">搜索驱动</a>
 <a href="#evolution">Agent 自进化</a>
 <a href="#questions">仍在探索</a>
-<a href="#future">未来计划</a></nav>
+<a href="#future">未来计划</a>
+<a href="#experiments">工作台实验记录</a></nav>
         </aside>
+        <div class="reading-column">
         <article class="manuscript" aria-label="项目正文">
 <h2 id="introduction">引言<small>（Introduction）</small></h2>
 <p>把一段视频交给编码器，选择一个预设，然后等待输出。这是一种简单而有效的工作方式。但当我们开始为具体内容寻找更合适的配置时，问题就复杂起来了：参考帧应该怎样设置？运动搜索值得投入多少计算？上一段视频上有效的参数，为什么在这一段上没有带来同样的改善？</p>
@@ -146,6 +148,35 @@
 <p>我们希望 CodecHarness 能像持续积累实验笔记的编码专家一样工作：带着已有知识开始，为当前视频做实际试验，再把结果留给下一次搜索。每一段视频都需要自己的验证，而每一次验证都可能为后续任务增加一份有用的经验。</p>
           <footer class="credits">本文依据《CodecHarness 中文报告》改写。章节组织与工程叙述方式参考 Netflix Technology Blog 的《The Netflix Cosmos Platform》。文中流程图为依据报告绘制的机制示意。</footer>
         </article>
+          <section class="records" aria-labelledby="experiments">
+            <h2 id="experiments">工作台实验记录</h2>
+            <p>下面是三项实验在 CodecHarness 工作台中的界面截取。前两项沿着不同目标各搜索 50 轮，第三项在同一条新视频上比较两种搜索起点。</p>
+
+            <h3>曼谷市场片：画质达标后，码率还能降到多少？</h3>
+            <figure>
+              <a class="diagram" href="images/workbench/market.webp"><img src="images/workbench/market.webp" alt="曼谷市场片的 50 轮寻优曲线。蓝点满足画质下限，红叉低于下限，绿线在第 48 轮降到 286.425 kb/s。" width="1290" height="567" loading="lazy"></a>
+              <figcaption>画质下限为 VMAF 90。红叉虽然码率更低，但画质未达标，绿线因此只随合格候选下降。第 48 轮取得本次最低合格码率 286.425 kb/s，VMAF 为 90.226。该点是搜索实测，本组未另行独立复测。</figcaption>
+            </figure>
+
+            <h3>行车片：在码率上限内，哪一轮画质最高？</h3>
+            <figure>
+              <a class="diagram" href="images/workbench/drive.webp"><img src="images/workbench/drive.webp" alt="行车片 50 轮实测，绿线记录码率上限内的最高 VMAF，在第 35 轮升至 91.657。" width="1290" height="567" loading="lazy"></a>
+              <figcaption>这次把码率限制在 397.305 kb/s 以内，纵轴改看画质。图上几个更高的红叉都超过了码率上限。第 35 轮以 382.658 kb/s 得到最高合规 VMAF 91.657，独立复测得到相同码流。</figcaption>
+            </figure>
+
+            <h3>地毯片：读取十条训练片的经验，哪一轮首次达标？</h3>
+            <p>两组使用同一条开发片，每组都跑满 10 轮。按 VMAF ≥ 90 且码率 ≤ 397.305 kb/s 回看逐轮反馈，空记忆组第 10 轮首次达标，经验组第 2 轮首次达标。下图分别选中了这两轮。</p>
+            <div class="record-pair">
+              <figure><figcaption>空记忆组 · 第 10 轮</figcaption>
+                <a class="diagram" href="images/workbench/baseline.webp"><img src="images/workbench/baseline.webp" alt="空记忆组第 10 轮编码反馈为 VMAF 90.22、353.88 kb/s。" width="522" height="522" loading="lazy"></a>
+              </figure>
+              <figure><figcaption>十片经验组 · 第 2 轮</figcaption>
+                <a class="diagram" href="images/workbench/memory.webp"><img src="images/workbench/memory.webp" alt="十片经验组第 2 轮编码反馈为 VMAF 91.57、379.51 kb/s。" width="522" height="522" loading="lazy"></a>
+              </figure>
+            </div>
+            <p>放回整组 19 条开发片，空记忆组有 8 条通过复测，经验组有 9 条。共同达标的 8 条里，地毯片提前了 8 轮，其余 7 条的首次达标轮次相同。</p>
+          </section>
+        </div>
       </div>
     </div>
   </main>
