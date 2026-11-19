@@ -87,9 +87,8 @@ figcaption { margin-top: .65rem; }
 .records h2 { font-size: clamp(1.65rem, 2.35vw, 2.3rem); scroll-margin-top: 1rem; }
 .records h3 { font-size: 1.2rem; margin: 2.2rem 0 .6rem; }
 .records p { margin-block: .8rem; line-height: 1.9; }
-.records figure { margin: 1rem 0; }
+.records .record-note { color: #635b54; font-size: .94rem; }
 .record-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
-.record-pair figcaption { font-weight: 650; color: #38352e; margin: 0 0 .5rem; }
 @media (max-width: 38rem) {
   .record-pair { grid-template-columns: 1fr; gap: 0; }
 }

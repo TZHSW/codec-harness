@@ -6,6 +6,8 @@
   <meta name="description" content="由知识、真实编码反馈与跨样本记忆驱动的参数优化 Agent。">
   <title>CodecHarness：让编码参数搜索积累经验</title>
   <link rel="stylesheet" href="homepage.css">
+  <link rel="stylesheet" href="workbench.css">
+  <script defer src="workbench.js"></script>
 </head>
 <body id="top">
   <a class="skip" href="#introduction">跳至正文</a>
@@ -150,30 +152,20 @@
         </article>
           <section class="records" aria-labelledby="experiments">
             <h2 id="experiments">工作台实验记录</h2>
-            <p>下面是三项实验在 CodecHarness 工作台中的界面截取。前两项沿着不同目标各搜索 50 轮，第三项在同一条新视频上比较两种搜索起点。</p>
+            <noscript><p>开启 JavaScript 可逐轮查看曲线及编码反馈。</p></noscript>
+            <p>前两项实验各搜索 50 轮。点击曲线上的候选点，或拖动轮次滑块，可以查看当轮码率、画质和截至该轮的最佳结果。第三项可并排比较同一条视频在两种起点下的逐轮反馈。</p>
 
             <h3>曼谷市场片：画质达标后，码率还能降到多少？</h3>
-            <figure>
-              <a class="diagram" href="images/workbench/market.webp"><img src="images/workbench/market.webp" alt="曼谷市场片的 50 轮寻优曲线。蓝点满足画质下限，红叉低于下限，绿线在第 48 轮降到 286.425 kb/s。" width="1290" height="567" loading="lazy"></a>
-              <figcaption>画质下限为 VMAF 90。红叉虽然码率更低，但画质未达标，绿线因此只随合格候选下降。第 48 轮取得本次最低合格码率 286.425 kb/s，VMAF 为 90.226。该点是搜索实测，本组未另行独立复测。</figcaption>
-            </figure>
+            <div id="market-replay"></div>
+            <p class="record-note">画质下限为 VMAF 90。红叉虽然码率更低，但画质未达标，绿线因此只随合格候选下降。第 48 轮取得本次最低合格码率 286.425 kb/s，VMAF 为 90.226。该点是搜索实测，本组未另行独立复测。</p>
 
             <h3>行车片：在码率上限内，哪一轮画质最高？</h3>
-            <figure>
-              <a class="diagram" href="images/workbench/drive.webp"><img src="images/workbench/drive.webp" alt="行车片 50 轮实测，绿线记录码率上限内的最高 VMAF，在第 35 轮升至 91.657。" width="1290" height="567" loading="lazy"></a>
-              <figcaption>这次把码率限制在 397.305 kb/s 以内，纵轴改看画质。图上几个更高的红叉都超过了码率上限。第 35 轮以 382.658 kb/s 得到最高合规 VMAF 91.657，独立复测得到相同码流。</figcaption>
-            </figure>
+            <div id="drive-replay"></div>
+            <p class="record-note">这次把码率限制在 397.305 kb/s 以内，纵轴改看画质。图上几个更高的红叉都超过了码率上限。第 35 轮以 382.658 kb/s 得到最高合规 VMAF 91.657，独立复测得到相同码流。</p>
 
             <h3>地毯片：读取十条训练片的经验，哪一轮首次达标？</h3>
-            <p>两组使用同一条开发片，每组都跑满 10 轮。按 VMAF ≥ 90 且码率 ≤ 397.305 kb/s 回看逐轮反馈，空记忆组第 10 轮首次达标，经验组第 2 轮首次达标。下图分别选中了这两轮。</p>
-            <div class="record-pair">
-              <figure><figcaption>空记忆组 · 第 10 轮</figcaption>
-                <a class="diagram" href="images/workbench/baseline.webp"><img src="images/workbench/baseline.webp" alt="空记忆组第 10 轮编码反馈为 VMAF 90.22、353.88 kb/s。" width="522" height="522" loading="lazy"></a>
-              </figure>
-              <figure><figcaption>十片经验组 · 第 2 轮</figcaption>
-                <a class="diagram" href="images/workbench/memory.webp"><img src="images/workbench/memory.webp" alt="十片经验组第 2 轮编码反馈为 VMAF 91.57、379.51 kb/s。" width="522" height="522" loading="lazy"></a>
-              </figure>
-            </div>
+            <p>两组使用同一条开发片，每组都跑满 10 轮。按 VMAF ≥ 90 且码率 ≤ 397.305 kb/s 回看逐轮反馈，空记忆组第 10 轮首次达标，经验组第 2 轮首次达标。默认选中各组首次达标轮次，也可勾选同步切换，比较两组在同一轮的表现。</p>
+            <div id="memory-replay"></div>
             <p>放回整组 19 条开发片，空记忆组有 8 条通过复测，经验组有 9 条。共同达标的 8 条里，地毯片提前了 8 轮，其余 7 条的首次达标轮次相同。</p>
           </section>
         </div>
