@@ -1,0 +1,27 @@
+.landing {
+  min-height: 100vh;
+  min-height: 100svh;
+  display: grid;
+  align-items: center;
+  background: radial-gradient(ellipse at 83% 26%, #42262e 0%, transparent 52%), #141317;
+}
+.landing-main { padding-block: clamp(2.5rem, 8vh, 7rem); }
+.landing .hero { padding-block: clamp(4rem, 12vw, 11rem); }
+.landing .wordmark { font-size: clamp(3rem, 8.5vw, 8rem); }
+.destinations { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(.8rem, 2vw, 2rem); }
+.destinations a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .5rem;
+  padding: clamp(1rem, 2vw, 1.8rem) .2rem;
+  border-block: 1px solid #625158;
+  font-size: clamp(1.35rem, 2.3vw, 2.2rem);
+  font-weight: 600;
+}
+.destinations a span { color: var(--accent); font-weight: 400; }
+.destinations a:hover, .destinations a:focus-visible { color: var(--accent); border-color: var(--accent); text-decoration: none; }
+@media (max-width: 40rem) {
+  .destinations { grid-template-columns: 1fr; gap: 0; }
+  .destinations a + a { border-top: 0; }
+}
