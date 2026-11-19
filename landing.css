@@ -7,6 +7,16 @@
 .landing-main { width: min(90%, 76rem); padding-block: clamp(3rem, 8vh, 7rem); }
 .landing .hero { padding: 0 0 clamp(2.2rem, 5vw, 4.5rem); }
 .landing .wordmark { font-size: clamp(3rem, 7.4vw, 7.1rem); }
+.landing-subtitle {
+  margin-top: clamp(.8rem, 1.6vw, 1.4rem);
+  color: #e6d5ce;
+  font-family: "Noto Serif CJK SC", "Source Han Serif SC", "Songti SC", "STSong", "SimSun", serif;
+  font-size: clamp(1.125rem, .9rem + 1vw, 1.75rem);
+  font-weight: 500;
+  line-height: 1.6;
+  letter-spacing: .025em;
+}
+.landing-subtitle span { display: inline-block; max-width: 100%; }
 .destinations { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(.8rem, 1.8vw, 1.8rem); }
 .entry {
   --accent-card: #ffa180;
