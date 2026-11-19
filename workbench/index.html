@@ -3,9 +3,24 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>任务工作台 · CodecHarness</title>
+  <title>实验记录 · CodecHarness</title>
   <link rel="stylesheet" href="app.css">
+  <link rel="stylesheet" href="navigation.css">
   <script defer src="app.js"></script>
 </head>
-<body><div id="root"></div><noscript>开启 JavaScript 可切换任务和实验轮次。</noscript></body>
+<body>
+  <header class="project-nav">
+    <a class="project-name" href="../"><i aria-hidden="true"></i>CodecHarness</a>
+    <nav aria-label="主导航">
+      <a href="../#overview">搜索闭环</a><a href="../#modules">模块职责</a><a href="../#evolution">Agent 自进化</a><a href="./" aria-current="page">实验记录</a>
+    </nav>
+  </header>
+  <details class="findings"><summary>这四条记录怎么读？</summary>
+          <p><strong>曼谷市场片</strong>固定 VMAF ≥ 90，四段接续搜索共 50 轮。第 48 轮测得最低合格码率 286.425 kb/s，VMAF 为 90.226。该点尚无独立复测。</p>
+          <p><strong>行车片</strong>固定码率上限 397.305 kb/s。50 轮中，第 35 轮在上限内画质最高，实测 382.658 kb/s、VMAF 91.657，独立复测得到相同码流。</p>
+          <p><strong>地毯片</strong>两组各跑满 10 轮。同时按 VMAF ≥ 90 和码率 ≤ 397.305 kb/s 判断，空记忆组在第 10 轮首次达标，读取十条训练片经验的组在第 2 轮首次达标。在全部 19 条开发片中，两组分别有 8 条和 9 条通过复测。共同达标的 8 条中，其余 7 条的首次达标轮次相同。</p>
+        </details>
+  <div id="root"></div>
+  <noscript>开启 JavaScript 可切换任务和实验轮次。</noscript>
+</body>
 </html>

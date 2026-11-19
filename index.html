@@ -11,7 +11,7 @@
   <a class="skip" href="#introduction">跳至正文</a>
   <header class="bar frame">
     <a class="brand" href="#top"><i aria-hidden="true"></i>CodecHarness</a>
-    <nav aria-label="主导航"><a href="#overview">搜索闭环</a><a href="#modules">模块职责</a><a href="#evolution">Agent 自进化</a><a href="#experiments">实验记录</a></nav>
+    <nav aria-label="主导航"><a href="#overview">搜索闭环</a><a href="#modules">模块职责</a><a href="#evolution">Agent 自进化</a><a id="experiments" href="workbench/">实验记录</a></nav>
   </header>
   <main>
     <div class="cover">
@@ -36,7 +36,7 @@
 <a href="#evolution">Agent 自进化</a>
 <a href="#questions">仍在探索</a>
 <a href="#future">未来计划</a>
-<a href="#experiments">工作台实验记录</a></nav>
+</nav>
         </aside>
         <div class="reading-column">
         <article class="manuscript" aria-label="项目正文">
@@ -149,16 +149,6 @@
         </article>
         </div>
       </div>
-      <section class="records" aria-labelledby="experiments">
-        <div class="records-heading"><h2 id="experiments">工作台实验记录</h2><a href="workbench/" target="_blank" rel="noopener">在新窗口打开工作台 ↗</a></div>
-        <p>在任务列表中选择实验，再到「逐轮决策轨迹」切换轮次，查看该轮提交的编码参数和实测结果。</p>
-        <iframe title="CodecHarness 任务工作台" src="workbench/" loading="lazy"></iframe>
-        <details class="findings"><summary>这四条记录怎么读？</summary>
-          <p><strong>曼谷市场片</strong>固定 VMAF ≥ 90，四段接续搜索共 50 轮。第 48 轮测得最低合格码率 286.425 kb/s，VMAF 为 90.226。该点尚无独立复测。</p>
-          <p><strong>行车片</strong>固定码率上限 397.305 kb/s。50 轮中，第 35 轮在上限内画质最高，实测 382.658 kb/s、VMAF 91.657，独立复测得到相同码流。</p>
-          <p><strong>地毯片</strong>两组各跑满 10 轮。同时按 VMAF ≥ 90 和码率 ≤ 397.305 kb/s 判断，空记忆组在第 10 轮首次达标，读取十条训练片经验的组在第 2 轮首次达标。在全部 19 条开发片中，两组分别有 8 条和 9 条通过复测。共同达标的 8 条中，其余 7 条的首次达标轮次相同。</p>
-        </details>
-      </section>
     </div>
   </main>
   <footer class="frame foot"><a class="brand" href="#top"><i aria-hidden="true"></i>CodecHarness</a><a href="#top">回到顶部</a></footer>
