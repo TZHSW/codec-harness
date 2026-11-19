@@ -18,7 +18,7 @@
 
 - **画质达标时最小化码率。** 固定 VMAF ≥ 90，在 50 轮实测中寻找满足画质要求的最低码率。[查看逐轮记录](https://tzhsw.github.io/codec-harness/workbench/?run=market)
 - **码率受限时最大化画质。** 固定码率上限 397.305 kb/s，在 50 轮实测中比较合规配置的 VMAF。[查看逐轮记录](https://tzhsw.github.io/codec-harness/workbench/?run=drive)
-- **比较跨视频经验对搜索的影响。** 空记忆组和使用十条训练片经验的组，在同一视频、同一码率上限下各搜索 10 轮。街景案例中，经验组第 4 轮超过了空记忆组第 10 轮的最佳画质；桥面车流案例中，对应轮次为第 3 轮和第 9 轮。[街景对照](https://tzhsw.github.io/codec-harness/workbench/?run=street-memory) · [桥面车流对照](https://tzhsw.github.io/codec-harness/workbench/?run=bridge-memory)
+- **比较跨视频经验对搜索的影响。** 空记忆组和使用十条训练片经验的组，在同一视频、同一码率上限下各搜索 10 轮。街景案例中，经验组第 4 轮超过了空记忆组第 10 轮的最佳画质。桥面车流案例中，对应轮次为第 3 轮和第 9 轮。[街景对照](https://tzhsw.github.io/codec-harness/workbench/?run=street-memory) · [桥面车流对照](https://tzhsw.github.io/codec-harness/workbench/?run=bridge-memory)
 
 ![CodecHarness 参数搜索闭环：编码反馈用于当前搜索，完成的实验为后续视频提供经验。](docs/images/search-loop.webp)
 
