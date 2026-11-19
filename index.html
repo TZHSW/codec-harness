@@ -6,8 +6,6 @@
   <meta name="description" content="由知识、真实编码反馈与跨样本记忆驱动的参数优化 Agent。">
   <title>CodecHarness：让编码参数搜索积累经验</title>
   <link rel="stylesheet" href="homepage.css">
-  <link rel="stylesheet" href="workbench.css">
-  <script defer src="workbench.js"></script>
 </head>
 <body id="top">
   <a class="skip" href="#introduction">跳至正文</a>
@@ -148,28 +146,19 @@
 <p>接下来的关键，是通过实验检验这个闭环：领域知识是否改善冷启动？统计特征与描述特征是否帮助找到更相关的案例？历史经验能否迁移到新样本？Agent 对候选来源和停止时机的选择，能否在保持编码效果的同时减少搜索次数？</p>
 <p>这些问题将决定知识和记忆应当如何组织，也将帮助我们理解框架在哪些内容与目标条件下最有价值。</p>
 <p>我们希望 CodecHarness 能像持续积累实验笔记的编码专家一样工作：带着已有知识开始，为当前视频做实际试验，再把结果留给下一次搜索。每一段视频都需要自己的验证，而每一次验证都可能为后续任务增加一份有用的经验。</p>
-          <footer class="credits">本文依据《CodecHarness 中文报告》改写。章节组织与工程叙述方式参考 Netflix Technology Blog 的《The Netflix Cosmos Platform》。文中流程图为依据报告绘制的机制示意。</footer>
         </article>
-          <section class="records" aria-labelledby="experiments">
-            <h2 id="experiments">工作台实验记录</h2>
-            <noscript><p>开启 JavaScript 可逐轮查看曲线及编码反馈。</p></noscript>
-            <p>前两项实验各搜索 50 轮。点击曲线上的候选点，或拖动轮次滑块，可以查看当轮码率、画质和截至该轮的最佳结果。第三项可并排比较同一条视频在两种起点下的逐轮反馈。</p>
-
-            <h3>曼谷市场片：画质达标后，码率还能降到多少？</h3>
-            <div id="market-replay"></div>
-            <p class="record-note">画质下限为 VMAF 90。红叉虽然码率更低，但画质未达标，绿线因此只随合格候选下降。第 48 轮取得本次最低合格码率 286.425 kb/s，VMAF 为 90.226。该点是搜索实测，本组未另行独立复测。</p>
-
-            <h3>行车片：在码率上限内，哪一轮画质最高？</h3>
-            <div id="drive-replay"></div>
-            <p class="record-note">这次把码率限制在 397.305 kb/s 以内，纵轴改看画质。图上几个更高的红叉都超过了码率上限。第 35 轮以 382.658 kb/s 得到最高合规 VMAF 91.657，独立复测得到相同码流。</p>
-
-            <h3>地毯片：读取十条训练片的经验，哪一轮首次达标？</h3>
-            <p>两组使用同一条开发片，每组都跑满 10 轮。按 VMAF ≥ 90 且码率 ≤ 397.305 kb/s 回看逐轮反馈，空记忆组第 10 轮首次达标，经验组第 2 轮首次达标。默认选中各组首次达标轮次，也可勾选同步切换，比较两组在同一轮的表现。</p>
-            <div id="memory-replay"></div>
-            <p>放回整组 19 条开发片，空记忆组有 8 条通过复测，经验组有 9 条。共同达标的 8 条里，地毯片提前了 8 轮，其余 7 条的首次达标轮次相同。</p>
-          </section>
         </div>
       </div>
+      <section class="records" aria-labelledby="experiments">
+        <div class="records-heading"><h2 id="experiments">工作台实验记录</h2><a href="workbench/" target="_blank" rel="noopener">在新窗口打开工作台 ↗</a></div>
+        <p>在任务列表中选择实验，再到「逐轮决策轨迹」切换轮次，查看该轮提交的编码参数和实测结果。</p>
+        <iframe title="CodecHarness 任务工作台" src="workbench/" loading="lazy"></iframe>
+        <details class="findings"><summary>这四条记录怎么读？</summary>
+          <p><strong>曼谷市场片</strong>固定 VMAF ≥ 90，四段接续搜索共 50 轮。第 48 轮测得最低合格码率 286.425 kb/s，VMAF 为 90.226。该点尚无独立复测。</p>
+          <p><strong>行车片</strong>固定码率上限 397.305 kb/s。50 轮中，第 35 轮在上限内画质最高，实测 382.658 kb/s、VMAF 91.657，独立复测得到相同码流。</p>
+          <p><strong>地毯片</strong>两组各跑满 10 轮。同时按 VMAF ≥ 90 和码率 ≤ 397.305 kb/s 判断，空记忆组在第 10 轮首次达标，读取十条训练片经验的组在第 2 轮首次达标。在全部 19 条开发片中，两组分别有 8 条和 9 条通过复测。共同达标的 8 条中，其余 7 条的首次达标轮次相同。</p>
+        </details>
+      </section>
     </div>
   </main>
   <footer class="frame foot"><a class="brand" href="#top"><i aria-hidden="true"></i>CodecHarness</a><a href="#top">回到顶部</a></footer>
