@@ -19,3 +19,8 @@
 .project-nav nav { display: flex; flex-wrap: wrap; gap: .5rem clamp(.9rem, 3vw, 2.8rem); font-size: .95rem; }
 
 .platform-task b { white-space: normal; overflow-wrap: anywhere; }
+.pair-controls { margin: 12px 0; color: #434858; }
+.pair-controls [role="group"] { display: flex; flex-wrap: wrap; gap: 6px; }
+.pair-controls button { padding: 7px 14px; border: 1px solid #d3ccdf; border-radius: 6px; background: white; }
+.pair-controls button[aria-pressed="true"] { border-color: #7651d6; background: #eee8ff; color: #4b2b9b; }
+.pair-controls p { line-height: 1.65; margin: 8px 0; }
