@@ -103,3 +103,15 @@
   .book { width: 41%; } .panes { width: 54%; } .plot { width: 62%; }
 }
 @media (prefers-reduced-motion: reduce) { .entry { transition: none; } }
+
+.author-contact {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  border-top: 1px solid #ffffff28;
+  margin-top: clamp(2rem, 4vw, 3.5rem);
+  padding-top: 1.25rem;
+}
+.author-contact img { display: block; width: 8rem; height: 8rem; }
+.author-contact p { margin: 0 0 .45rem; color: #eee4df; }
+.author-contact a { color: #ffc3a9; text-decoration: underline; text-underline-offset: .22em; }
